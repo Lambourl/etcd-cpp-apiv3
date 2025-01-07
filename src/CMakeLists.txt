@@ -18,6 +18,10 @@ file(GLOB_RECURSE CPP_CLIENT_CORE_SRC
 )
 
 add_library(etcd-cpp-api-core-objects OBJECT ${CPP_CLIENT_CORE_SRC} ${PROTOBUF_GENERATES})
+
+message("je recherche ce message CPP_CLIENT_CORE_SRC ${CPP_CLIENT_CORE_SRC}")
+message("je recherche ce message PROTOBUF_GENERATES ${PROTOBUF_GENERATES}")
+
 use_cxx(etcd-cpp-api-core-objects)
 set_exceptions(etcd-cpp-api-core-objects)
 add_dependencies(etcd-cpp-api-core-objects protobuf_generates)
@@ -26,9 +30,16 @@ target_link_libraries(etcd-cpp-api-core-objects PUBLIC
                       ${OPENSSL_LIBRARIES}
                       ${GRPC_LIBRARIES}
 )
+
+message("je recherche ce message OPENSSL_LIBRARIES ${OPENSSL_LIBRARIES}")
+message("je recherche ce message GRPC_LIBRARIES ${GRPC_LIBRARIES}")
+
+
 if(TARGET protobuf::libprotobuf)
+message("je recherche ce message 1")
     target_link_libraries(etcd-cpp-api-core-objects PUBLIC protobuf::libprotobuf)
 else()
+message("je recherche ce message 2 PROTOBUF_LIBRARIES ${PROTOBUF_LIBRARIES}")
     target_link_libraries(etcd-cpp-api-core-objects PUBLIC ${PROTOBUF_LIBRARIES})
 endif()
 
