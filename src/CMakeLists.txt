@@ -4,6 +4,8 @@ set_source_files_properties(${PROTOBUF_GENERATES} PROPERTIES GENERATED TRUE)
 macro(include_generated_protobuf_files target)
     target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/../proto/gen)
     target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/../proto/gen/proto)
+
+    message("je recherche CMAKE_CURRENT_BINARY_DIR in ${CMAKE_CURRENT_BINARY_DIR}")
 endmacro()
 
 # prepare common objects
