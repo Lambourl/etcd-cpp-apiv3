@@ -95,3 +95,10 @@ else()
     install(TARGETS etcd-cpp-api-core etcd-cpp-api
             EXPORT etcd-targets)
 endif()
+
+
+get_target_property(direct_includes etcd-cpp-api-core-objects INCLUDE_DIRECTORIES)
+get_target_property(interface_includes etcd-cpp-api-core-objects INTERFACE_INCLUDE_DIRECTORIES)
+message("je recherche et regarde direct_includes : ${direct_includes}")
+message("je recherche et regarde interface_includes ${interface_includes}")
+
